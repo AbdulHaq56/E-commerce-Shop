@@ -1,7 +1,7 @@
 import React from "react";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
-import { Hero, Navbar } from "./component";
+import { Products, Hero, Navbar } from "./component";
 
 export default async function Home() {
 
@@ -13,6 +13,7 @@ export default async function Home() {
     <>
       <Navbar />
       <Hero />
+      <Products />
     </>
   );
 }

@@ -7,8 +7,8 @@ const Navbar = () => {
         <div className='container w-full h-full items-center flex justify-between'>
             <h1 className='font-urbanist font-black text-2xl'>AirPod Haven.</h1>
             <div className='cart-icon'>
-            <FiShoppingBag />
-            <span className='card-item-qty'>99</span>
+            <FiShoppingBag className='cursor-pointer'/>
+            <span className='card-item-qty cursor-pointer'>99</span>
             </div>
         </div>
     </div>

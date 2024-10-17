@@ -94,7 +94,10 @@ body {
 }
 
 .cart-container{
-  @apply border h-[100vh]  w-[600px] bg-white  float-right px-[40px] py-[50px] relative;
+  .cart-container {
+    @apply border h-[100vh] max-w-full bg-white float-right px-[40px] py-[50px] relative;
+}
+
 }
 
 .cart-heading{

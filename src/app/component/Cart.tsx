@@ -40,7 +40,7 @@ const Cart = () => {
   }
 
 
-  return showCart (
+  return (
     <div className="cart-wrapper">
       <div className="cart-container">
         <button className="cart-heading" onClick={handleClose}>

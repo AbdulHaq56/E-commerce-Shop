@@ -1,19 +1,18 @@
-import React from "react";
-import { client } from "@/sanity/lib/client";
-import { groq } from "next-sanity";
-import { Products, Hero, Navbar } from "./component";
+'use client'
 
-export default async function Home() {
+import { useState, createContext } from 'react';
+import { Hero, Navbar, Products } from "./component"
+import { AppContext } from './context/AppContext';
 
-  const products = await client.fetch(groq `*[_type=="product"]`)
-  console.log(products);
-  
+export default function Home() {
+  const [showCart, setShowCart] = useState(false);
+  console.log(showCart);
 
   return (
-    <>
+    <AppContext.Provider value={{ showCart, setShowCart }}>
       <Navbar />
       <Hero />
       <Products />
-    </>
-  );
+    </AppContext.Provider>
+  )
 }

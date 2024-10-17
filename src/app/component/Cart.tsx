@@ -11,8 +11,7 @@ import { TiDeleteOutline } from "react-icons/ti";
 const Cart = () => {
   const { toggleCartItemQty, totalPrice, totalQuantity, cartItems, showCart, setShowCart, onRemove }: any =
     useContext(CartContext);
-
-
+    
   const handleClose = () => {
     setShowCart(!showCart);
   };
@@ -40,7 +39,7 @@ const Cart = () => {
   }
 
 
-  return (
+  return showCart ? (
     <div className="cart-wrapper">
       <div className="cart-container">
         <button className="cart-heading" onClick={handleClose}>
@@ -102,7 +101,7 @@ const Cart = () => {
         }
       </div>
     </div>
-  )
+  ) : null;
 };
 
 export default Cart;

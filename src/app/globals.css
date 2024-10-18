@@ -71,7 +71,7 @@ body {
 }
 
 .btn{
-  @apply  text-black md:w-1/2 p-5 text-xl font-bold w-full border border-4 border-black;
+  @apply  text-black md:w-1/2 p-5 text-xl font-bold w-full border-4 border-black;
 }
 
 .add-to-cart{
@@ -224,7 +224,7 @@ body {
 } 
 
 .checkout-btn{
-  @apply  text-black p-5 text-xl font-bold w-full border border-4 border-black;
+  @apply  text-black p-5 text-xl font-bold w-full border-4 border-black;
 }
 
 .checkout-btn:hover{

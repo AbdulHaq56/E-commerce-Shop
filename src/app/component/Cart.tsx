@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useContext } from "react";
@@ -9,7 +10,7 @@ import { AiOutlineMinus } from "react-icons/ai";
 import { TiDeleteOutline } from "react-icons/ti";
 
 const Cart = () => {
-  const { toggleCartItemQty, totalPrice, totalQuantity, cartItems, showCart, setShowCart, onRemove }: any =
+  const { toggleCartItemQty, totalPrice, totalQuantity, cartItems, showCart, setShowCart, onRemove }:any =
     useContext(CartContext);
     
   const handleClose = () => {

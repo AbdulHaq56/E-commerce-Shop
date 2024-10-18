@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { createContext, useState } from "react";
@@ -54,7 +55,7 @@ export const CartProvider = ({children}:any) =>{
     }
 
     const toggleCartItemQty = (id:any, value:any) =>{
-        let foundProduct = cartItems.find((item)=> item._id === id);
+        const foundProduct = cartItems.find((item)=> item._id === id);
         const index = cartItems.findIndex((product)=>product._id === id);
         const updatedCartItems = [...cartItems];
 
@@ -77,7 +78,7 @@ export const CartProvider = ({children}:any) =>{
     }
 
     const onRemove = (product:any) => {
-        let foundProduct = cartItems.find((item)=> item._id === product._id);
+        const foundProduct = cartItems.find((item)=> item._id === product._id);
         const newCartItems = cartItems.filter((item) => item._id !== product._id);
 
         setCartItems(newCartItems);

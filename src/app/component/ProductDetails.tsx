@@ -1,11 +1,17 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import {AiOutlineMinus, AiOutlinePlus} from 'react-icons/ai'
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { CartContext } from "../context/CartContext";
 
 const ProductDetails = ({ product }: any) => {
   const [index, setIndex] = useState(0);
+  const {cartItems ,addProduct, qty, incQty, decQty }: any = useContext(CartContext);
+  console.log(cartItems);
+  
+
   return (
     <div className="product-details-section">
       <div className="product-details-container">
@@ -47,25 +53,24 @@ const ProductDetails = ({ product }: any) => {
             <div className="text-xl font-medium">{`$${product.price}`}</div>
           </div>
 
-            <div className="flex gap-2 items-center">
-              <h3>Quantity</h3>
-              <p className="quantity-desc flex items-center border-black">
-                <span className="minus">
-                  <AiOutlineMinus />
-                </span>
-                <span className="num">
-                  1
-                </span>
-                <span className="plus">
-                  <AiOutlinePlus/>
-                </span>
-              </p>
-            </div>
+          <div className="flex gap-2 items-center">
+            <h3>Quantity</h3>
+            <p className="quantity-desc flex items-center border-black">
+              <span className="minus" onClick={decQty}>
+                <AiOutlineMinus />
+              </span>
+              <span className="num">{qty}</span>
+              <span className="plus" onClick={incQty}>
+                <AiOutlinePlus />
+              </span>
+            </p>
+          </div>
 
-            <button className="btn add-to-cart">
-              Add To Cart
+          <button className="btn add-to-cart"
+          onClick={()=>addProduct(product,qty)}
+          >
+            Add To Cart
             </button>
-
         </div>
       </div>
     </div>

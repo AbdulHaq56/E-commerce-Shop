@@ -94,10 +94,7 @@ body {
 }
 
 .cart-container{
-  .cart-container {
-    @apply border h-[100vh] max-w-full bg-white float-right px-[40px] py-[50px] relative;
-}
-
+  @apply border h-[100vh]  w-[600px] bg-white  float-right px-[40px] py-[50px] relative;
 }
 
 .cart-heading{
@@ -127,8 +124,8 @@ body {
   font-size: 20px;
 }
 
-.btn{
-  width: 45%;
+/* .btn{
+  width: 100%;
    max-width: 400px;
    padding: 10px 12px;
    border-radius: 15px;
@@ -142,7 +139,7 @@ body {
    cursor: pointer;
    transform: scale(1, 1);
    transition: transform 0.5s ease;
- } 
+ }  */
  
  .btn:hover{
    transform: scale(1.1,1.1);
@@ -233,5 +230,4 @@ body {
 .checkout-btn:hover{
   @apply  text-white p-5 text-xl font-bold w-full bg-black  ;
 }
-
 /* CART ENDS */

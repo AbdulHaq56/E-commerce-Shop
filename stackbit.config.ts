@@ -9,7 +9,7 @@ export default defineStackbitConfig({
     "ssgName": "nextjs",
     "contentSources": [
         new SanityContentSource({
-            projectId: process.env.SANITY_PROJECT_ID || 'v24uokaw',
+            projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'v24uokaw',
             token: process.env.SANITY_ACCESS_TOKEN!,
             dataset: process.env.SANITY_DATASET || 'production',
             rootPath: __dirname,

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, createContext } from 'react';
+import { useState} from 'react';
 import { Hero, Navbar, Products } from "./component"
 import { AppContext } from './context/AppContext';
 

@@ -9,12 +9,12 @@ export default defineStackbitConfig({
     "ssgName": "nextjs",
     "contentSources": [
         new SanityContentSource({
-            projectId: process.env.SANITY_PROJECT_ID!,
+            projectId: process.env.SANITY_PROJECT_ID || 'v24uokaw',
             token: process.env.SANITY_ACCESS_TOKEN!,
             dataset: process.env.SANITY_DATASET || 'production',
             rootPath: __dirname,
             studioPath: path.resolve(__dirname, 'studio'),
-            studioUrl: process.env.SANITY_STUDIO_URL || ''
+            studioUrl: process.env.SANITY_STUDIO_URL || '/studio'
         }),
     ],
     "postInstallCommand": "npm i --no-save @stackbit/types @stackbit/cms-sanity"

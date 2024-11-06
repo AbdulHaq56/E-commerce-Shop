@@ -5,14 +5,38 @@ import { AiOutlineLeft, AiOutlinePlus } from "react-icons/ai";
 import { CartContext } from "../context/CartContext";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
-import { AiOutlineMinus } from 'react-icons/ai';
-import { TiDeleteOutline } from 'react-icons/ti';
+import { AiOutlineMinus } from "react-icons/ai";
+import { TiDeleteOutline } from "react-icons/ti";
 
 const Cart = () => {
-  const { totalQuantity ,cartItems, showCart, setShowCart }: any = useContext(CartContext);
+  const { toggleCartItemQty, totalPrice, totalQuantity, cartItems, showCart, setShowCart, onRemove }: any =
+    useContext(CartContext);
   const handleClose = () => {
     setShowCart(!showCart);
   };
+
+  const handleCheckout = async () => {
+    try {
+        const response = await fetch('/api/checkout',{
+          method:'POST',
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({products:cartItems}),
+        });
+        const data = await response.json();
+        if(data.url){
+          window.location.href = data.url
+        }
+    } catch (error) {
+      console.error("Error during checkout", error)
+    }
+
+
+
+
+  }
+
 
   return showCart ? (
     <div className="cart-wrapper">
@@ -35,31 +59,45 @@ const Cart = () => {
               />
               <div className="item-desc">
                 <div className="flex top">
-                    <h5>{product.name}</h5>
-                    <h4>{product.price}</h4>
+                  <h5>{product.name}</h5>
+                  <h4>{product.price}</h4>
                 </div>
                 <div className="flex bottom">
-                    <div className="quantity-desc">
-                        <span className="minus">
-                            <AiOutlineMinus/>
-                        </span>
+                  <div className="quantity-desc">
+                    <span className="minus" onClick={()=> toggleCartItemQty(product._id, 'minus')}>
+                      <AiOutlineMinus />
+                    </span>
 
-                        <span className="num">
-                            {product.quantity}
-                        </span>
+                    <span className="num">{product.quantity}</span>
 
-                        <span className="plus">
-                            <AiOutlinePlus/>
-                        </span>
-                    </div>
-                    <button type="button" className="remove-item">
-                        <TiDeleteOutline/>
-                    </button>
+                    <span className="plus" onClick={()=> toggleCartItemQty(product._id, 'plus')}>
+
+                      <AiOutlinePlus />
+                    </span>
+                  </div>
+                  <button type="button" className="remove-item"
+                  onClick={()=>onRemove(product)}
+                  >
+                    <TiDeleteOutline />
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
+        {cartItems.length>0 && 
+            <div className="cart-bottom">
+            <div className="total">
+              <h3>Sub Total</h3>
+              <h3>${totalPrice}</h3>
+            </div>
+            <div className="btn-container">
+              <button type="button" className="checkout-btn" onClick={handleCheckout}>
+                Pay with Stripe
+              </button>
+            </div>
+          </div>
+        }
       </div>
     </div>
   ) : null;

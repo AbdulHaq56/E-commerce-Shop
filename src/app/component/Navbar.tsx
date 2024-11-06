@@ -23,7 +23,7 @@ const Navbar = () => {
             </Link>
             <button className='cart-icon' onClick={handleClick}>
             <FiShoppingBag className='cursor-pointer'/>
-            <span className='card-item-qty'>{totalQuantity}</span>
+            <span className='cart-item-qty'>{totalQuantity}</span>
             </button>
         </div>
     </div>

@@ -85,7 +85,7 @@ const Cart = () => {
             </div>
           ))}
         </div>
-        {cartItems.length>0 && 
+        {cartItems.length>0 &&
             <div className="cart-bottom">
             <div className="total">
               <h3>Sub Total</h3>
